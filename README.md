@@ -31,6 +31,44 @@
 - 数据备份、安全注意事项和故障排查
 - 六平台编译和发布流程
 
+## TVBox 接口和配置地址
+
+TVBox 不同版本的设置项名称可能不同，按下面的用途填写：
+
+| TVBox 设置项 | 使用地址 | 用途 |
+| --- | --- | --- |
+| 配置地址 / 订阅地址 | `http://运行程序电脑的局域网IP:8999/tvbox.json` | 推荐，直接返回完整站点配置 |
+| 点播接口 / 接口 | `http://运行程序电脑的局域网IP:8999/api/tvbox` | TVBox 只允许填接口时使用 |
+| 兼容接口 | `http://运行程序电脑的局域网IP:8999/api.php/provide/vod` | 苹果 CMS 风格兼容地址 |
+
+当前 Mac 的局域网地址实测为 `192.168.10.7`，所以现在可以直接填写：
+
+```text
+配置地址：http://192.168.10.7:8999/tvbox.json
+点播接口：http://192.168.10.7:8999/api/tvbox
+兼容接口：http://192.168.10.7:8999/api.php/provide/vod
+```
+
+如果 IP 发生变化，在 Mac 终端执行：
+
+```bash
+ipconfig getifaddr en0
+```
+
+如果返回为空，再试 `en1` 或 `en2`。
+
+公网或反向代理示例：
+
+```text
+https://tv.example.com/tvbox.json
+https://example.com/juku/tvbox.json
+https://example.com/juku/api/tvbox
+```
+
+电视或手机上的 TVBox 不要填写 `127.0.0.1`，因为那会指向电视自己。填好后保存配置并重新加载首页，TVBox 会显示站点“果果剧库”。
+
+TVBox 播放请求会自动携带 `client=tvbox&quality=highest`。有 `1080p` 和 `720p` 时选择 `1080p`，只有 `720p` 时回退到 `720p`。
+
 ## macOS 快速启动
 
 Apple Silicon：
