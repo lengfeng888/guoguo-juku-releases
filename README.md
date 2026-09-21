@@ -69,6 +69,8 @@ https://example.com/juku/api/tvbox
 
 TVBox 播放请求会自动携带 `client=tvbox&quality=highest`。有 `1080p` 和 `720p` 时选择 `1080p`，只有 `720p` 时回退到 `720p`。
 
+配置文件会同时下发程序自己的 `danmaku` 弹幕源。TVBox 按当前剧名和集数读取对应的红果本集评论，不再回退到客户端内置库，避免同名影视或优酷条目只返回一条不相关弹幕。
+
 ## macOS 快速启动
 
 Apple Silicon：
